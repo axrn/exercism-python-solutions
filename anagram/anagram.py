@@ -1,9 +1,8 @@
-def detect_anagrams(s, w_list):
-    s_low = s.lower()
-    s_letters = sorted(s_low)
+def detect_anagrams(word: str, possible_anagrams: list) -> list:
+    word_low = word.lower()
 
-    def is_anogram(word):
-        word = word.lower()
-        return s_low != word and s_letters == sorted(word)
+    def is_anagram(candidate: str):
+        candidate_low = candidate.lower()
+        return word_low != candidate_low and sorted(word_low) == sorted(candidate_low)
 
-    return filter(is_anogram, w_list)
+    return list(filter(is_anagram, possible_anagrams))
