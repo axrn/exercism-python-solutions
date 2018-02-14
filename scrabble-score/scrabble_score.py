@@ -6,10 +6,5 @@ def score(word: str) -> int:
              'K': 5,
              'JX': 8,
              'QZ': 10}
-    res = 0
-    for char in word.upper():
-        for s in SCORE.keys():
-            if char in s:
-                res += SCORE[s]
-                continue
-    return res
+    LETTER_SCORE = {x: i for s, i in SCORE.items() for x in s}
+    return sum(LETTER_SCORE[x] for x in word.upper())
