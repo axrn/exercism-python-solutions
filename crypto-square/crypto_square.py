@@ -6,6 +6,6 @@ def encode(text: str) -> str:
     r = round(len(normalized) ** 0.5)
     c = round(len(normalized) / r)
 
-    filled = normalized + (r * c - len(normalized)) * ' '
+    filled = normalized.ljust(r * c)
 
     return ' '.join(filled[start::c] for start in range(c))
