@@ -1,4 +1,4 @@
-from random import choice
+from random import sample
 from string import ascii_uppercase, digits
 
 
@@ -11,10 +11,14 @@ class Robot(object):
     def reset(self):
         self.__init__()
 
+    @property
+    def name(self):
+        return self._name
+
     @staticmethod
     def _generate_name() -> str:
         def random_name():
-            return ''.join([choice(ascii_uppercase) for _ in range(2)] + [choice(digits) for _ in range(3)])
+            return ''.join(sample(ascii_uppercase, 2) + sample(digits, 3))
 
         possible_name = random_name()
         while possible_name in Robot._used_names:
@@ -22,7 +26,3 @@ class Robot(object):
         Robot._used_names.add(possible_name)
 
         return possible_name
-
-    @property
-    def name(self):
-        return self._name
