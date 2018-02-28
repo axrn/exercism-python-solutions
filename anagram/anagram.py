@@ -1,7 +1,3 @@
-def detect_anagrams(word: str, possible_anagrams: list) -> list:
-    word_low = word.lower()
-
-    def is_anagram(candidate: str) -> bool:
-        return word_low != candidate and sorted(word_low) == sorted(candidate)
-
-    return [x for x in possible_anagrams if is_anagram(x.lower())]
+def detect_anagrams(sample: str, words: list) -> list:
+    low_sample = sample.lower()
+    return [x for x in words if low_sample != x.lower() and sorted(low_sample) == sorted(x.lower())]
